@@ -143,9 +143,6 @@ function UserWin(item) {
     let ResultImg = document.createElement("img");
 
     if (item == "Paper") {
-      // let divResult = document.createElement("div");
-      // let ResultImg = document.createElement("img");
-
       ResultImg.src = "images/paper.png";
       ResultImg.alt = "paper";
       divResult.id = "paper-win";
@@ -154,9 +151,6 @@ function UserWin(item) {
       ResultBox.appendChild(divResult);
     }
     if (item == "Rock") {
-      // let divResult = document.createElement("div");
-      // let ResultImg = document.createElement("img");
-
       ResultImg.src = "images/rock.png";
       ResultImg.alt = "rock";
       divResult.id = "rock-win";
@@ -165,9 +159,6 @@ function UserWin(item) {
       ResultBox.appendChild(divResult);
     }
     if (item == "Scissor") {
-      // let divResult = document.createElement("div");
-      // let ResultImg = document.createElement("img");
-
       ResultImg.src = "images/scissor.png";
       ResultImg.alt = "scissor";
       divResult.id = "scissor-win";
