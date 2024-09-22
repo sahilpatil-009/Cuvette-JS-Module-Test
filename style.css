@@ -1,0 +1,552 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --font-: "Roboto";
+  --box-radious: 13px;
+  --score-box-width: 140px;
+  --score-box-height: 130px;
+  --score-box-font: 17px;
+  --score-letter-scpace: 2px;
+  --score-top-padding: 10px;
+  --box-shadow: -2px 2px 11px 2px #00000059;
+}
+
+/* Animations */
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}
+
+.shake {
+  animation: shake 0.13s 3;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #8cc461;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Score Board */
+.board {
+  width: 70%;
+  height: 160px;
+  margin-top: 3%;
+  /* background-color: aliceblue; */
+  border: 2px solid white;
+  border-radius: var(--box-radious);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#title p {
+  text-align: start;
+  font-size: 40px;
+  font-weight: 600;
+  font-family: var(--font-);
+  color: white;
+  margin-left: 20px;
+  /* background-color: beige; */
+  letter-spacing: 4px;
+}
+
+.score {
+  width: 35%;
+  height: 100%;
+  /* background-color: aliceblue; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: var(--font-);
+  transition: all 2s ease;
+}
+
+#computer {
+  width: var(--score-box-width);
+  height: var(--score-box-height);
+  border-radius: var(--box-radious);
+  background-color: white;
+  text-align: center;
+  font-size: var(--score-box-font);
+  font-weight: 700;
+  color: #656565;
+  padding-top: var(--score-top-padding);
+  letter-spacing: var(--score-letter-scpace);
+}
+#player {
+  width: var(--score-box-width);
+  height: var(--score-box-height);
+  border-radius: var(--box-radious);
+  background-color: white;
+  text-align: center;
+  font-size: var(--score-box-font);
+  font-weight: 700;
+  padding-top: var(--score-top-padding);
+  letter-spacing: var(--score-letter-scpace);
+  color: #656565;
+  padding-top: 10px;
+}
+
+#computer-score {
+  /* background-color: aqua; */
+  font-size: 70px;
+  font-weight: 800;
+  color: #000;
+}
+
+#player-score {
+  font-size: 70px;
+  font-weight: 800;
+  color: #000;
+}
+
+/* Game Icons */
+
+.gameBoard {
+  /* border: 2px solid black; */
+  width: 50%;
+  height: 500px;
+  position: relative;
+  /* display: none; */
+  /* display: block; */
+}
+
+#rock {
+  height: 120px;
+  width: 120px;
+  background-color: white;
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  border-radius: 50%;
+  border: 15px solid #0074b6;
+  z-index: 10;
+  box-shadow: var(--box-shadow);
+  /* box-shadow: -2px 2px 11px 2px #00000059 inset; */
+  transition: all 0.3s ease;
+}
+#rock:hover {
+  /* background-color: #FF0000; */
+  border: 5px solid #0074b6;
+  transform: scale(1.1);
+}
+.center-png {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+#scissor {
+  height: 120px;
+  width: 120px;
+  background-color: white;
+  position: absolute;
+  top: 15%;
+  right: 25%;
+  border-radius: 50%;
+  border: 15px solid #bd00ff;
+  z-index: 10;
+  box-shadow: var(--box-shadow);
+  transition: all 0.3s ease;
+}
+#scissor:hover {
+  border: 5px solid #bd00ff;
+  transform: scale(1.1);
+}
+
+#paper {
+  height: 120px;
+  width: 120px;
+  background-color: white;
+  position: absolute;
+  top: 60%;
+  right: 42%;
+  border-radius: 50%;
+  border: 15px solid #ffa943;
+  z-index: 10;
+  box-shadow: var(--box-shadow);
+  /* box-shadow: -2px 2px 11px 2px #00000059 inset; */
+  transition: all 0.3s ease;
+}
+#paper:hover {
+  border: 5px solid #ffa943;
+  transform: scale(1.1);
+}
+hr.new1 {
+  border: 8px solid #000000a3;
+  width: 200px;
+  position: absolute;
+  top: 25%;
+  right: 35%;
+}
+
+hr.new2 {
+  border: 8px solid #444;
+  background-color: #444;
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: rotate(120deg);
+}
+hr.new3 {
+  border: 8px solid #444;
+  background-color: #444;
+  width: 200px;
+  position: absolute;
+  top: 50%;
+  right: 45%;
+  transform: rotate(-120deg);
+}
+
+/* Game Rules */
+.Rules {
+  width: 350px;
+  height: 370px;
+  background-color: #004429;
+  color: #fff;
+  position: fixed;
+  top: 35%;
+  right: -30%;
+  text-align: center;
+  padding: 10px;
+  font-family: var(--font-);
+  border: 8px solid #fff;
+  border-radius: 20px;
+  display: block;
+  transition: all 1s ease;
+}
+
+#close-btn {
+  position: absolute;
+  z-index: 10;
+  right: -25px;
+  top: -30px;
+  background-color: #ff0000;
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
+  font-family: var(--font-);
+  border: 6px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+#close-btn:hover {
+  border: 2px solid #fff;
+}
+
+.Rules h2 {
+  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  font-weight: 500;
+}
+
+.Rules ul {
+  width: 100%;
+  height: 100%;
+  text-wrap: wrap;
+  text-align: start;
+  text-wrap: pretty;
+  list-style: square;
+  padding: 10px;
+  margin: 10px;
+}
+
+.Rules li {
+  margin: 15px;
+  position: relative;
+  list-style: none;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+.Rules li::before {
+  position: absolute;
+  content: "";
+  left: -20px;
+  top: 15px;
+  width: 8px;
+  height: 9px;
+  background-color: #ffd600;
+}
+
+.buttons{
+  width: 300px;
+  height: 50px;
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: all 2s ease;
+}
+
+#showRules {
+  all: unset;
+  color: white;
+  font-family: var(--font-);
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid white;
+  padding: 8px 20px;
+  border-radius: 10px;
+  letter-spacing: var(--score-letter-scpace);
+  cursor: pointer;
+  left: 5%;
+}
+#next{
+  all: unset;
+  color: white;
+  font-family: var(--font-);
+  font-size: 20px;
+  font-weight: 600;
+  border: 2px solid white;
+  padding: 8px 20px;
+  border-radius: 10px;
+  letter-spacing: var(--score-letter-scpace);
+  cursor: pointer;
+  display: none;
+}
+
+/* Result elements */
+.display-result {
+  /* border: 2px solid black; */
+  width: 70%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  display: none;
+}
+
+.resultBoard{
+  display: none;
+}
+
+.pick-block {
+  /* border: 2px solid black; */
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: var(--font-);
+  position: relative;
+}
+.pick-block:nth-child(2) {
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  margin-top: -40px;
+  text-align: center;
+  z-index: 20;
+  gap: 5px;
+}
+.pick-block:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.pick-block:nth-child(3) {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.pick-block p {
+  position: absolute;
+  top: 10%;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: var(--score-letter-scpace);
+}
+
+.pick-block h3 {
+  font-size: 40px;
+  letter-spacing: 4px;
+  font-weight: 800;
+}
+
+.pick-block h4 {
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+
+#PlayAgain{
+  all: unset;
+  font-family: var(--font-);
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  letter-spacing: var(--score-letter-scpace);
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all .4s ease;
+}
+
+#PlayAgain:hover{
+    background-color:#8cc461;
+    color: #fff;
+}
+
+#Replay{
+  all: unset;
+  font-family: var(--font-);
+  font-size: 16px;
+  background-color: #fff;
+  color: #111;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  letter-spacing: var(--score-letter-scpace);
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all .4s ease;
+  display: none;
+}
+
+#Replay:hover{
+  background-color:#8cc461;
+  color: #fff;
+}
+
+
+/* Winner Green Background */
+.boxes {
+  border-radius: 50%;
+}
+.winner-box-3 {
+  padding: 2.1rem;
+  background: #66b248;
+}
+.winner-box-2 {
+  padding: 2rem;
+  background-color: #33a62f57;
+}
+.winner-box-1 {
+  padding: 2.5rem;
+  background-color: #289a27;
+  box-shadow: 0px 1px 62px rgba(0, 0, 0, 0.13);
+}
+
+#rock-win {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  border-radius: 50%;
+  border: 15px solid #0074b6;
+  box-shadow: var(--box-shadow);
+}
+
+#scissor-win {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  border-radius: 50%;
+  border: 15px solid #bd00ff;
+  box-shadow: var(--box-shadow);
+}
+#paper-win {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  border-radius: 50%;
+  border: 15px solid #ffa943;
+  box-shadow: var(--box-shadow);
+}
+
+/* Winner Page */
+.Winner{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* border: 2px solid black; */
+  display: none;
+}
+
+.winBoard{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.winBoard img:nth-child(1){
+  position: absolute;
+  top: 30%;
+  z-index: 20;
+}
+
+.wishes h2{
+  font-size: 100px;
+  font-family: var(--font-);
+  letter-spacing: 10px;
+  color: #fff;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.wishes h3{
+  font-size: 30px;
+  font-family: var(--font-);
+  letter-spacing: var(--score-letter-scpace);
+  color: #fff;
+  text-align: center;
+}
+
+#AgainPlay{
+  all: unset;
+  font-family: var(--font-);
+  font-size: 16px;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  letter-spacing: var(--score-letter-scpace);
+  cursor: pointer;
+  margin-top: 50px;
+  transition: all .4s ease;
+}
+
+#AgainPlay:hover{
+    background-color:#8cc461;
+    color: #fff;
+}
